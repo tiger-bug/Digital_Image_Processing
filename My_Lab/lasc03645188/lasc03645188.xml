@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<metadata>
+<idinfo>
+<citation>
+<citeinfo>
+<origin>Corps of Engineers, St. Louis District</origin>
+<pubdate>20161230</pubdate>
+<title>03645188</title>
+<geoform>remote-sensing image</geoform>
+<pubinfo>
+<pubplace>US Army Corps of Engineers St. Louis District</pubplace>
+<publish>US Army Corps of Engineers St. Louis District</publish>
+</pubinfo>
+<onlink>http://www.mvs.usace.army.mil/index.html</onlink>
+</citeinfo>
+</citation>
+<descript>
+<abstract>
+Fugro Geospatial Inc acquired LiDAR with Leica sensor
+ALS60 MPiA for the North Dakota LiDAR program. This portion
+of the LiDAR program covers areas in North Dakota and South
+Dakota which approximately totalled 9582 sq miles.
+Acquisition occured Spring 2015.
+The ALS60 sensor settings included acquisition at 7,000&apos;
+AMT, 150 knots, 15% sidelap, pulse rate 109,600Hz, scan rate
+50Hz, 34 degree field of view, 4,281ft swath width, maximum
+along track spacing (occurs at FOV edge) of 2.37m in overlap
+areas, maximum cross track spacing (occurs at Nadir) 1.17
+meter, 3sigma post spacing of 1.34m, and a 3sigma point
+density of 0.717points per square meter.  Each sensor was
+also equipped with IPAS inertial measuring unit (IMU) and a
+dual frequency airborne GPS receiver.  These settings
+were used to meet or exceed 15cm vertical RMSE in flat
+areas with minimial vegitation.
+Final deliverables for the LiDAR are in UTM zone 14
+coordinate system NAD83(2007) NAVD88 Geod03 meters
+tiled 2,000m x 2,000m with an XY naming convention.
+*******DELIVERABLES*****
+***  1m_Int_IMG - 1-Meter Intensity image created
+from all Lidar classes in *.img format
+***  DEM_IMG - 1-Meter DEM created from .LAS ground
+class and ARC 3D-Waterbodies
+***  Metadata -  Flight logs and acquisition dates
+***  Final_LAS - Classes included 1-Unclassified, 2-Ground,
+3-Low Vegetation, 4-Med Vegetation, 5-High Vegetation,
+6-Building, 7-Noise, 10-Ignored-Ground within 1m of water
+edge, 11-Scan edge, 15-Water/Vegetation (This class was
+used within areas of water/swampy waters/cat-tail
+vegetation)
+*** Shapefiles - Supplemental data including waterbodies
+***  Survey Data RS
+ACQUISITION DATES
+LiDAR Block A -  11-15-2015 to 11-20-2015
+LiDAR Block B -  03-26-2016 to 04-29-2016
+LiDAR Block D -  03-28-2015 to 11-22-2015
+</abstract>
+<purpose>
+USACE ST Louis District strives to develop partnerships
+to leverage the planned acquisition of LiDAR and
+imagery to better meet state, local, and federal needs and
+generate a freely accessible seamless high-resolution
+digital elevation model.  One of the products of this effort is
+1.4m average post spacing LiDAR and its derivatives.
+</purpose>
+<supplinf>
+USACE ST Louis District MISSION AND
+OBJECTIVES
+To provide a forum for collaborative research and
+communication relative to flood damage reduction and
+natural resource protection via basin universities, private
+industry, government agencies, and non-government
+organizations.
+Utilize technical and professional expertise to help resolve
+critical water management issues.
+Facilitate enhanced networking of research professionals
+from higher education institutions and federal, state, and
+local agency personnel, environmental groups, and citizens
+of the James Watershed to cooperate in solving the critical
+water management and natural resource issues in the
+basin.
+Provide opportunities for faculty and students to receive
+education, perform research, and gain experience on
+subjects important to the region.  Prepare student for future
+employment while providing valuable basic and applied
+research.
+</supplinf>
+</descript>
+<timeperd>
+<timeinfo>
+<sngdate>
+<caldate>20160429</caldate>
+</sngdate>
+</timeinfo>
+<current>Ground Conditions</current>
+</timeperd>
+<status>
+<progress>Complete</progress>
+<update>Irregular</update>
+</status>
+<spdom>
+<bounding>
+<westbc>-100.783892</westbc>
+<eastbc>-100.757084</eastbc>
+<northbc>+46.850044</northbc>
+<southbc>+46.831649</southbc>
+</bounding>
+</spdom>
+<keywords>
+<theme>
+<themekt>None</themekt>
+<themekey>LiDAR Acquisition</themekey>
+<themekey>LiDAR</themekey>
+<themekey>LiDAR 1.4m</themekey>
+<themekey>USACE St Louis District</themekey>
+<themekey>James River Watershed</themekey>
+</theme>
+<place>
+<placekt>Geographic Names Information System</placekt>
+<placekey>SD</placekey>
+<placekey>South Dakota</placekey>
+<placekey>ND</placekey>
+<placekey>North Dakota</placekey>
+<placekey>James River</placekey>
+</place>
+</keywords>
+<accconst>There are no limitations for access.</accconst>
+<useconst>
+None other than the USACE ST Louis District and
+supporting partners ask to be credited in any derived
+products or services.
+</useconst>
+<ptcontac>
+<cntinfo>
+<cntorgp>
+<cntorg>USACE ST Louis District</cntorg>
+</cntorgp>
+<cntaddr>
+<addrtype>mailing and physical address</addrtype>
+<address>
+St. Louis District Public Affairs Office
+1222 Spruce Street
+</address>
+<city>St. Louis</city>
+<state>MO</state>
+<postal>63103-2833</postal>
+<country>USA</country>
+</cntaddr>
+<cntvoice>(314) 331-8068</cntvoice>
+<hours>8am to 5pm Central Time</hours>
+<cntinst>http://www.mvs.usace.army.mil/</cntinst>
+</cntinfo>
+</ptcontac>
+<browse>
+<browsen>None</browsen>
+<browsed>None</browsed>
+<browset>None</browset>
+</browse>
+</idinfo>
+<dataqual>
+<attracc>
+<attraccr>
+GPS phase data was post processed with continuous
+kinematic survey techniques using &quot;On the Fly&quot; (OTF)
+integer ambiguity resolution.  The GPS data was processed
+with forward and reverse processing algorithms.  The
+results from each process, using the data collected at the
+airport and in project area, were combined to yield a single
+fixed integer phase differential solution of the aircraft
+trajectory.  The differences between the forward to reverse
+solution within the project area were within project
+specifications, indicating a valid and accurate
+solution. An IMU was used to record precise changes in
+position and orientation of the LIDAR scanner at a rate of
+200 Hz.  All IMU data was processed post flight with a filter
+to integrate inertial measurements and precise phase
+differential GPS positions.  The resulting solution contains
+geodetic position, omega, phi, kappa, and time for
+subsequent merging with the laser ranging information.
+</attraccr>
+</attracc>
+<logic>Tiling is based on the UTM14 coordinates.</logic>
+<complete>Complete</complete>
+<posacc>
+<horizpa>
+<horizpar>
+Meets or exceeds horizontal accuracy of 0.6m RMSE
+1.04 m at the 95% confidence level.
+</horizpar>
+</horizpa>
+<vertacc>
+<vertaccr>
+Vertical elevations will meet or exceed 15.0 cm RMSE
+0.30m at the 95% confidence level for bare
+earth products.
+</vertaccr>
+</vertacc>
+</posacc>
+<lineage>
+<srcinfo>
+<srccite>
+<citeinfo>
+<origin>USACE ST Louis District</origin>
+<pubdate>20160315</pubdate>
+<pubtime>Unknown</pubtime>
+<title>http://www.mvs.usace.army.mil/</title>
+<geoform>remote-sensing image</geoform>
+<onlink>http://www.mvs.usace.army.mil/</onlink>
+</citeinfo>
+</srccite>
+<typesrc>Digital copy</typesrc>
+<srctime>
+<timeinfo>
+<sngdate>
+<caldate>20150317</caldate>
+</sngdate>
+</timeinfo>
+<srccurr>Acquisition Date</srccurr>
+</srctime>
+<srccitea>Georectifed LiDAR data sets</srccitea>
+<srccontr>Digital Georectifed LiDAR.</srccontr>
+</srcinfo>
+<procstep>
+<procdesc>
+AeroScan LiDAR timed reflection data and the IMU SOL
+flies were processed together using LiDAR processing
+software.  The data set for each flight line was checked for
+project area coverage, data gaps between overlapping
+flight lines, and tension/compression areas (areas where
+data points are more or less dense than the average project
+specified post spacing).  Using an iterative process that
+involves analyzing raster difference calculations the
+omega, phi, kappa angle corrections for the LiDAR
+instrument were determined.  Corrections were applied to
+the LiDAR data set. Extensive comparisons were made of
+vertical and horizontal positional differences between
+points common to two or more LiDAR flight lines.  An
+intensity raster for each flight line was generated and
+verified that intensity was recorded for each LiDAR point.
+LiDAR ground points were compared to independently
+surveyed and positioned ground control points at both the
+airport bore-sight area and the project area. Based on the
+results of these comparisons, the LiDAR data was vertically
+biased to the ground.
+(1) PRE-PROCESSING STAGE
+LiDAR, GPS and IMU data are processed together using
+LiDAR processing software.
+The LiDAR data set for each flight line is checked for
+project area coverage and LiDAR post spacing is checked
+to ensure it meets project specifications.
+The LiDAR collected at the calibration area is used to
+correct the rotational, atmospheric, and vertical elevation
+differences that are inherent to LiDAR data.
+Intensity raster is generated to verify that intensity was
+recorded for each LiDAR point.
+LiDAR data is transformed to the specified project
+coordinate system.
+By utilizing the ground survey data collected at the
+calibration site and project area, the LiDAR data is
+vertically biased to the ground.
+Comparisons between the biased LiDAR data and ground
+survey data within the project area are evaluated and a
+final RMSE value is generated to ensure the data meets
+project specifications.
+LiDAR data in overlap areas of project flight lines is
+removed and data from all swaths is merged into a single
+data set.
+The data set is trimmed to the digital project boundary
+including an additional buffer zone, which is typically about
+50 meters (buffer zone assures adequate contour
+generation
+from the DEM).
+The resulting data set is referred to as the raw LiDAR data.
+(2) SURFACING STAGE
+The raw LIDAR data is processed through a minimum
+block mean algorithm and points are classified as either
+bare earth or non-bare earth.
+User developed &quot;macros&quot; that factor mean terrain angle
+and height from the ground are used to determine bare
+earth point classification.
+The next phase of the surfacing process is a 2D edit
+procedure that ensures the accuracy of the automated
+feature classification.
+Editors use a combination of imagery, intensity of the
+LiDAR reflection and tin-editing software to assess points.
+If required, the LiDAR data is filtered as necessary, using a
+quadric error metric to remove redundant points to
+generate a keypoint class. This method
+leaves points where there is a change in the slope of
+surfaces (road ditches) and eliminates points from evenly
+sloped terrain (flat field) where the points do not affect the
+surface.  When other classifications and derived products
+are required, various applications and proprietary algorithms
+are used to meet each customer&apos;s unique requirements.
+</procdesc>
+<procdate>20161230</procdate>
+</procstep>
+</lineage>
+</dataqual>
+<spref>
+<horizsys>
+<planar>
+<gridsys>
+<gridsysn>Universal Transverse Mercator</gridsysn>
+<utm>
+<utmzone>14</utmzone>
+<transmer>
+<sfctrmer>0.9996</sfctrmer>
+<longcm>-099.000000</longcm>
+<latprjo>0.0</latprjo>
+<feast>500000</feast>
+<fnorth>0.0</fnorth>
+</transmer>
+</utm>
+</gridsys>
+<planci>
+<plance>row and column</plance>
+<coordrep>
+<absres>.001</absres>
+<ordres>.001</ordres>
+</coordrep>
+<plandu>Meters</plandu>
+</planci>
+</planar>
+<geodetic>
+<horizdn>North American Datum NAD83 (NSRS2007)</horizdn>
+<ellips>Geodetic Reference System 80 (GRS 80)</ellips>
+<semiaxis>6378137</semiaxis>
+<denflat>298.257222101</denflat>
+</geodetic>
+</horizsys>
+<vertdef>
+<altsys>
+<altdatum>North American Vertical datum of 1988 Geoid03</altdatum>
+<altres>.001</altres>
+<altunits>Meters</altunits>
+<altenc>Implicit coordinate</altenc>
+</altsys>
+<depthsys>
+<depthdn>No correction</depthdn>
+<depthres>.001</depthres>
+<depthdu>Meters</depthdu>
+<depthem>Implicit coordinate</depthem>
+</depthsys>
+</vertdef>
+</spref>
+<eainfo>
+<overview>
+<eaover>
+1.4m LiDAR Acquisition and Processing for USACE and
+supporting partners.
+</eaover>
+<eadetcit>None</eadetcit>
+</overview>
+</eainfo>
+<distinfo>
+<distrib>
+<cntinfo>
+<cntorgp>
+<cntorg>USACE ST Louis District</cntorg>
+</cntorgp>
+<cntaddr>
+<addrtype>mailing and physical address</addrtype>
+<address>
+St. Louis District Public Affairs Office
+1222 Spruce Street
+</address>
+<city>St. Louis</city>
+<state>MO</state>
+<postal>63103-2833</postal>
+<country>USA</country>
+</cntaddr>
+<cntvoice>(314) 331-8068</cntvoice>
+<hours>8am to 5pm Central Time</hours>
+<cntinst>http://www.mvs.usace.army.mil/</cntinst>
+</cntinfo>
+</distrib>
+<distliab>
+In no event shall the creators, custodians, or distributors of
+this information be liable for any damages arising out of its
+use (or the inability to use it).
+</distliab>
+</distinfo>
+<metainfo>
+<metd>20161230</metd>
+<metc>
+<cntinfo>
+<cntorgp>
+<cntorg>USACE ST Louis District</cntorg>
+</cntorgp>
+<cntaddr>
+<addrtype>mailing and physical address</addrtype>
+<address>
+St. Louis District Public Affairs Office
+1222 Spruce Street
+</address>
+<city>St. Louis</city>
+<state>MO</state>
+<postal>63103-2833</postal>
+<country>USA</country>
+</cntaddr>
+<cntvoice>(314) 331-8068</cntvoice>
+<hours>8am to 5pm Central Time</hours>
+<cntinst>http://www.mvs.usace.army.mil/</cntinst>
+</cntinfo>
+</metc>
+<metstdn>FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+<metstdv>FGDC-STD-001-1998</metstdv>
+</metainfo>
+</metadata>

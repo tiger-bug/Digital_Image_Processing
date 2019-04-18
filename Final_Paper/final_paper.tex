@@ -1,0 +1,116 @@
+\documentclass[11pt]{article}
+\setlength{\parskip}{1em}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{amsthm}
+\usepackage[left=1in, right=1in, top=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{listings}
+\usepackage{titling}
+\usepackage{datetime}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage[export]{adjustbox}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage[font={small,it}]{caption}
+\captionsetup{justification   = raggedright,
+	singlelinecheck = false}
+
+\graphicspath{ {D:\Digitial_Image_Processing\Final_Paper} }
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+
+
+\begin{document}
+	\lstset{language=python} 
+	\title{LiDAR: Analysis and Classification}
+	
+	\author{Steven Spiegel}
+	\date{\today}
+	\maketitle
+
+	\begin{abstract}
+		LiDAR (Light Detection and Ranging) is ubiquitous in its use and applications.  Some of its applications is in computer vision and robotics, surveying, emergency management, and object classification.  this project aims to introduce the reader into the science of LiDAR, processing tools, and applications.  In particular, this paper will look at PDAL (Point Data Abstraction Library) and its use in point cloud processing and application.  The point cloud in question is a segment of a North Dakota collect.  In conjunction with Python and Jupyter Notebook, this paper seeks to efficiently remove outliers, segment the ground, and classify the remaining points of an airborne LiDAR collection. 
+	\end{abstract}
+	\newpage
+	\section{Introduction}\label{sec:intro}
+	LiDAR (Light Detection and Ranging) is used in numerous scientific contexts, particularly in the realm of computer vision and surveying.  At it's heart, LiDAR measures the distances between transmitted and received signals.  There are several main types of LiDAR:
+	\begin{enumerate}  
+		\item Pulse: Emits a pulse and measures the time between hitting a target and the return time. 
+		\item Phase: Measures distances using interferometry. 
+		\item Geiger: Use sensors that are triggered by photons. 
+
+	\end{enumerate}
+	The mode of LiDAR used in my project is pulse based \cite{pdal}. 
+	\\\\
+	In addition to the different types of LiDAR, there are a number of different collection techniques.  The four primary types are terrestrial, airborne, mobile, and Unmanned Aerial Systems (UAS).  Terrestrial collects require the use of reflectors or planar regions to register scans together. The main struggle with this type of collect is the amount of work in moving the scanner from different scan positions.  However, these scanners often have ranges that are on the kilometer scale, allowing for massive data collects.  Mobile scans use the power of Robotic Operating Systems and feature matching to create a point cloud.  As the price of small LiDAR scanners and Unmanned Aerial Systems have become increasingly affordable, UAS LiDAR collection is becoming more common.  What would usually take days for surveyors to collect with a terrestrial scanner, UAS can collect in hours.  A plethora of software suites exist to process the LiDAR data for relative accuracy as well as absolute accuracy.    
+	\\\\
+	In this context, we are focused on classifying point clouds once they have been collected and processed.  There are a number of techniques to accomplish this.  In general, the strategy is as follows: Classify the ground, segment the point cloud, and classify the segments, as demonstrated in the master's thesis of Nina Varney \cite{varney}.  Other strategies can be taken to classify point clouds, such as PointNet, which utilizes an Convolution Neural Network to segment and classify point clouds \cite{PointNet}.  In our case, we directly classify the ground and then use the geometric properties of the remaining points to identify what class they should be in.  This is a more simplistic method than shown in \cite{PointNet} and \cite{varney}, however it will be sufficient for our purposes.  We know that in our scene we are only interested in classifying the vegetation and buildings.  Hence, we can mainly focus on looking at the geometric properties of the points themselves and then deduce what class they should be in.  The general strategy for processing the point cloud is as follows:  
+	\begin{enumerate}  
+	\item Remove outliers via a statistical or distance method.
+	\item Use morphological filtering and return numbers to classify ground returns.
+	\item Use point covariance to determine normal planes of remaining points.
+	\item Use Singular Value Decomposition of the Covariance Matrix to determine dimension of the points.
+	\item Classify based on the dimension of points.
+\end{enumerate}
+In order to accomplish this, we will employ PDAL pipelines which are written as JSON files and used in a Jupyter Notebook  \cite{pdal}.  PDAL has a python interface that allows one to create custom python code in addition to PDAL pipelines.  These functions are written in C++, but PDAL allows python to be used in addition to the pipelines.
+\\\\
+The next section will demonstrate these methods as well as give a brief discussion on the theory of each one.  Then, a basic PDAL pipeline will be demonstrated  For the purpose of this exercise, our goal is to classify outliers, ground, buildings, and trees. We will be classifying an airborne LiDAR collect called \texttt{CSite1\char`_orig-utm} \cite{pdal}. 
+
+\section{Methods}\label{methods}
+\subsection{Outliers}\label{sub:outliers}
+The first thing we need to do is to classify the outliers.  Outliers are noise points that aren't attributed to things we are interested in.  In airborne LiDAR this could be due to dust, birds, etc.  Hence, the first step is to eliminate outliers.  There are 2 primary methods: Statistical and Radial.
+\subsubsection{Statstical}\label{subsub:stat}
+Statistical Outlier Removal requires 2 calculations across the point cloud.  On the first pass, for point cloud $P$ with $n$ points, and for each point $p_i$ for $i\in 1 \ldots N$, the mean distance $\mu_i$ is computed for $k$ nearest neighbors.  Then, we calculate the global mean of means in the following:
+\begin{equation}\label{eqn:average} 
+\mu=\dfrac{\sum_{i=1}^{N} \mu_{i}}{N} 
+\end{equation}
+and the standard deviation ($\sigma$) is defined as
+\begin{equation}\label{eqn:std} 
+\sigma=\sqrt{\dfrac{\sum_{i=1}^{N} (\mu-\mu_{i})^2}{N-1}} 
+\end{equation}
+
+Thus, the threshold ($t$) for outlier classification is as follows:
+\begin{equation}\label{eqn:threshold}
+t=\mu+\sigma m
+\end{equation}
+where $m$ is a user defined input.  Thus, we have the following criteria for a statistical outlier:
+\begin{equation}\label{eqn:stat_rule}
+outlier_{i}=\begin{cases}
+true & \text{if $\mu_{i}>t$}\\
+false & \text{otherwise}
+\end{cases}
+\end{equation}.  
+Hence, any point $p_i > t$ is considered an outlier and is given the classification of 7 (standard noise class for LiDAR).
+\subsubsection{Radial}\label{subsub:radial}
+The other outlier method is a radial outlier filter.  The first calculation involves calculating $k_i$ nearest neighbors for each $p_i$.  Then, we select a minimum number of neighboring points $k_{min}$ and create the following rule.  
+\begin{equation}\label{eqn:rad_rule}
+outlier_{i}=\begin{cases}
+true & \text{if $k_{i}<k_{min}$}\\
+false & \text{otherwise}
+\end{cases}
+\end{equation}
+An example pipeline can be found in the appendix ().\\\\
+The next step is to classify ground returns (classification value of 2).  In order to do this, We will employ mathematical morphology with a progressively growing window to find ground returns.  
+\subsection{Ground Classification}\label{sub:ground}
+Morphological filtering dates back to mathematical set theory and digital image processing \cite{zhang2003progressive}.
+	\newpage
+\bibliographystyle{plain}
+\bibliography{bibfile}
+	
+	
+\end{document}

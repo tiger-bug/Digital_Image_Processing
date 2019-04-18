@@ -1,0 +1,24 @@
+http://users.cis.fiu.edu/~chens/PDF/TGRS.pdf
+https://pdal.io/
+
+https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+
+https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html
+
+https://www.mdpi.com/1424-8220/19/1/172/htm
+
+https://machinelearningmastery.com/singular-value-decomposition-for-machine-learning/
+
+https://web.pdx.edu/~jduh/courses/Archive/geog481w07/Students/Marcoe_LiDAR.pdf
+
+http://www.pointclouds.org/documentation/tutorials/normal_estimation.php
+
+http://toddneff.com/books/lidarhistory/extras/lidarhistory-timeline/
+
+http://www.starlino.com/imu_guide.html
+
+https://www.ucalgary.ca/engo_webdocs/SpecialPublications/KIS%2001/PDF/0707.PDF
+
+https://ri.cmu.edu/pub_files/2014/7/Ji_LidarMapping_RSS2014_v8.pdf
+
+LiDAR Remote Sensing and Applications Pinliang Dong and Qi Chen

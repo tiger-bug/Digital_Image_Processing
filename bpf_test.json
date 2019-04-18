@@ -1,0 +1,14 @@
+{
+  "pipeline":[
+    "2017_12_06_Ujen_Mapir3Wide_MaxSettings_3m_group1_densified_point_cloud_8_outlier_ground.las",
+    {
+      "type":"filters.eigenvalues",
+      "knn":8
+    },
+    {
+      "type":"writers.bpf",
+      "filename":"output.bpf",
+      "output_dims":"X,Y,Z,Eigenvalue0,Eigenvalue1,Eigenvalue2"
+    }
+  ]
+}

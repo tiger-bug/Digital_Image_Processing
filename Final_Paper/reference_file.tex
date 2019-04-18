@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+\setlength{\parskip}{1em}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{amsthm}
+\usepackage[left=1in, right=1in, top=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{datetime}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage[export]{adjustbox}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage[font={small,it}]{caption}
+\captionsetup{justification   = raggedright,
+	singlelinecheck = false}
+
+%%%%------Change path for graphics to the folder you place the LaTeX file.
+\graphicspath{ {D:\BAckup\LIDAR\VLP_report} }
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+
+\fancyhf{}
+\fancyhead[C]{UNCLASSIFIED}
+%\fancyfoot[C]{RESTRICTED}
+\renewcommand\headrulewidth{0pt}
+\pagestyle{fancy}
+\begin{document}
+	\title{VLP Calibration Instructions}
+	
+	\author{NGA: Research}
+	\date{\today}
+	\maketitle
+	\thispagestyle{fancy}
+	
+	\section{Introduction}\label{sec:intro}
+	The following is a guide for the integration of the APX15-UAV and Velodyne (VLP-16) device.  This guide will assist in calibrating the IMU, GNSS, and LiDAR device for geolocating the point cloud produced by the VLP-16.  The following definitions are from the APX-15 UAV Configuration guide, revision 1.2. 
+	
+	\section{Definitions} \label{sec:def}
+	
+	\begin{defn}\label{def:reference_frame}
+		\textit{Reference Body Frame}\\
+		The Reference Body Frame is considered to be the frame of reference of the LiDAR device (VLP-16).
+	\end{defn}
+	
+	\begin{defn}\label{def:vehicle_body_frame}
+		\textit{Vehicle Body Frame}\\
+		The Vehicle Body Frame is the frame of reference for the vehicle.  It follows the standard right handed coordinate system for a vehicle where the $+x$ direction is the direction of travel and the $+y$ direction is to the right of the $+x$ direction.  It follows that the $+z$ direction is orthogonal to the $x$ and $y$ axis below the vehicle frame based on the right handed coordinate system. 
+	\end{defn}
+	
+	
+	\begin{defn}\label{def:coord}
+		\textit{Reference frame coordinate system}\\
+		The coordinate system for the Reference Body Frame is defined below:\par
+		\makebox[1.5cm]{X}  The positive X-direction is to the right of the device and parallel to the horizontal plane.\par
+		\makebox[1.5cm]{Y}  The positive Y-direction is in the forward direction of travel and parallel to the horizontal plane.\par
+		\makebox[1.5cm]{Z}  The Z-direction is perpendicular to the horizontal plane and extends above the LiDAR device.\par
+		
+		
+	\end{defn}
+	
+	
+	\begin{defn}\label{def:ref_to_IMU}
+		\textit{Reference to IMU}\\
+		The reference to IMU is the 3-d vector describing the displacement of the IMU frame from the Reference Frame.  \textbf{The displacement is measured in the Reference Body Frame (moving from Reference Body Frame to the IMU).}
+	\end{defn}
+	
+	\begin{defn}\label{def:ref_to_GNSS}
+		\textit{Reference to GNSS}\\
+		The Reference to GNSS is the 3-d vector describing the displacement of the GNSS Antenna Phase Center from the Reference Frame (see Definition \ref{def:reference_frame}).  \textbf{This is measured from the perspective of the Vehicle Body Frame, not the Reference Body Frame.}
+		
+	\end{defn}
+	
+	\begin{defn}\label{def:wrt}
+		\textit{Body frame A with respect to B}\\
+		We define a body frame A with respect to B as the sequence of rotations of B to bring into alignment with A.  
+	\end{defn}
+	
+	\begin{defn}\label{def:tate_bryant}
+		\textit{Tate-Bryant Sequence}\\
+		The Tate-Bryant Sequence of rotations specifies a conventional rotation sequence for bringing two objects into alignment.  The first rotation is about the $z$ axis (yaw), then $y$ axis (pitch), and finally the $x$ axis (roll).  A positive rotation is also based on the right handed rule.  For example, if $+z$ is facing down, then a positive rotation is clockwise, however if $+z$ is facing up then a positive rotation is counterclockwise.\\\\
+		\textbf{Note: One cannot put negative rotations into the Applanix software.  For example, if a rotation about an axis can be described as $-45^\circ$, one must instead specify the equivalent positive rotation of $+320^\circ$.} 
+	\end{defn}
+	
+	\section{Mounting Angles for a terrestrial vehicle}\label{sec:mounting_truck}
+	
+	The mounting angle is defined as the angular offset from one frame in the perspective of another frame. Rotations will follow the Tate-Bryant sequence of rotations (see Definition \ref{def:tate_bryant}).  If the axis of the Reference Frame does not match the Vehicle Body Frame, then the Reference Body Frame will be defined in reference to the Vehicle Body Frame. \par
+	%\begin{wrapfigure}{r}{5cm}
+	%	\centering
+	%	
+	%	\includegraphics[scale=1,right]{vehicle_frame.png}
+	%	\caption{Coordinate system for the vehicle}
+	%	\label{sub_fig:vehicle_coord}
+	%\end{wrapfigure}
+	
+	\begin{wrapfigure}{r}{5cm}
+		\vspace{-30pt}
+		\includegraphics[scale=1,read=right]{vlp_coord.png}
+		\caption{Coordinate system for VLP-16}
+		\label{fig:coordinate_system}
+	\end{wrapfigure}
+	\subsection{Vehicle to Reference Frame}\label{subsec:vehicle_to_ref}
+	We are defining the reference frame with respect to the vehicle frame (see Definition \ref{def:wrt}).  Hence, the goal is to rotate the vehicle's body frame to align with the reference frame, which is the VLP-16.  Note the coordinate system for the VLP-16 can be seen in Figure %\ref{fig:coordinate_system}.  
+	
+	%\begin{wrapfigure}{r}{5cm}
+	%	\centering
+	%	
+	%	\includegraphics[scale=0.3,right]{{vlp_coord.png}
+	%	\caption{Coordinate system for the vehicle}
+	%	\label{fig:coordinate_system}
+	%\end{wrapfigure}
+	
+	
+	
+	
+	
+	
+	
+	\par Note that the $+y$ direction is in the direction of travel, the $+x$ direction is to the right of the direction of travel, and the $+z$ direction is above the VLP-16.   Thus, in order to rotate the vehicle frame to the reference frame, we conduct the following rotations:
+	\pagebreak
+	
+	
+	\begin{enumerate}
+		\item $z$ rotation of $+90^\circ$  
+		\begin{figure}[H]\label{fig: veh_first_rotation}
+			\includegraphics[scale=1,left]{car_rotation_1.png}	
+			
+		\end{figure}
+		\item  $y$ rotation of $0^\circ$\\
+		\begin{figure}[H]\label{fig: veh_second_rotation}
+			\includegraphics[scale=1,left]{car_rotation_2.png}
+			
+		\end{figure}
+		\pagebreak
+		\item $x$ rotation of $180^\circ$
+		\begin{figure}[H]\label{fig: veh_third_rotation}
+			\includegraphics[scale=1,left]{car_rotation_3.png}
+			
+		\end{figure}
+	\end{enumerate}
+	
+	These rotations will be put in the \textbf{Vehicle to Reference Mounting Angles} section of the Applanix software.  \\
+	
+	\subsection{Reference Frame to IMU}\label{subsec:ref_to_IMU}
+	
+	The VLP with respect to the IMU follows the same rotations as the Vehicle to Reference Frame.  These same angles will go into the \textbf{Reference to IMU Mounting Angles} section.  
+	
+	
+	\begin{figure}[h!]
+		\includegraphics[scale=1]{vlp_coord_uas.png}
+		\caption{New coordinate system for VLP-16 on UAS}
+		\label{fig: UAS_coord}
+	\end{figure}
+	The VLP-16 is rotated such that the scanner face is facing the ground as opposed to facing forward.  Hence, based on Figure \ref{fig:coordinate_system}, The new coordinate system for the Reference frame is shown in Figure \ref{fig: UAS_coord}.  
+	
+	\begin{figure}[h!]
+		%	\centering
+		
+		\includegraphics[scale=1,left]{vehicle_frame.png}
+		\caption{Coordinate system for the vehicle or UAS}
+		\label{sub_fig:vehicle_coord}
+	\end{figure}
+	
+	\section{Mounting angles for the UAS}\label{sec:mounting_UAS}
+	
+	%\begin{figure}[h!]
+	%	\includegraphics[scale=1]{vlp_coord_uas.png}
+	%	\caption{New coordinate system for VLP-16 on UAS}
+	%	\label{fig: UAS_coord}
+	%\end{figure}
+	%The VLP-16 is rotated such that the scanner face is facing the ground as opposed to facing forward.  Hence, based on Figure \ref{fig:coordinate_system}, The new coordinate system for the Reference frame is shown in Figure \ref{fig: UAS_coord}.  
+	%
+	%\begin{figure}[h!]
+	%%	\centering
+	%	
+	%	\includegraphics[scale=1,left]{vehicle_frame.png}
+	%	\caption{Coordinate system for the vehicle or UAS}
+	%	\label{sub_fig:vehicle_coord}
+	%\end{figure}
+	
+	\subsection{Vehicle to Reference Frame for the UAS}\label{subsec:vehicle_to_ref_uas}
+	Note that based on Figure \ref{fig: UAS_coord}, the mounting angles will be different than the mounting angles on the terrestrial vehicle.  The UAS vehicle to reference frame mounting angles are as follows:    %\pagebreak
+	\begin{enumerate}
+		\item $z$ rotation of $+90^\circ$  
+		\begin{figure}[h!]\label{fig: uas_first_rotation}
+			\includegraphics[scale=1.0,left]{uas_rotation_1.png}		
+		\end{figure}
+		\pagebreak
+		\item  $y$ rotation of $0^\circ$
+		\begin{figure}[h!]\label{fig: uas_second_rotation}
+			\includegraphics[scale=1.0,left]{uas_rotation_2.png}	
+		\end{figure}
+		%\pagebreak
+		
+		\item $x$ rotation of $+90^\circ$
+		\begin{figure}[h!]\label{fig: uas_third_rotation}
+			\includegraphics[scale=1.0,left]{uas_rotation_3.png}
+			
+		\end{figure}
+	\end{enumerate}
+	
+	These rotations will be put in the \textbf{Vehicle to Reference Mounting Angles} section of the Applanix software.
+	\subsection{Reference Frame to IMU for the UAS}\label{subsec:ref_to_IMU_uas}
+	The mounting angles for the reference frame to the IMU for the UAS is the same as the mounting angles described in \ref{subsec:vehicle_to_ref_uas}.  These same angles will go into the \textbf{Reference to IMU Mounting Angles} section.
+	
+\end{document}

@@ -1,0 +1,32 @@
+ENVI
+description = {
+  1995 AVIRIS "Effort" Corrected ATREM [Thu Apr 25 00:52:03 1996] }
+samples = 400
+lines   = 350
+bands   = 50
+header offset = 0
+file type = ENVI Standard
+data type = 2
+interleave = bil
+sensor type = Unknown
+byte order = 0
+x start = 215
+y start = 295
+default bands = {12,22,36}
+band names = {
+ Band 172, Band 173, Band 174, Band 175, Band 176, Band 177, Band 178, 
+ Band 179, Band 180, Band 181, Band 182, Band 183, Band 184, Band 185, 
+ Band 186, Band 187, Band 188, Band 189, Band 190, Band 191, Band 192, 
+ Band 193, Band 194, Band 195, Band 196, Band 197, Band 198, Band 199, 
+ Band 200, Band 201, Band 202, Band 203, Band 204, Band 205, Band 206, 
+ Band 207, Band 208, Band 209, Band 210, Band 211, Band 212, Band 213, 
+ Band 214, Band 215, Band 216, Band 217, Band 218, Band 219, Band 220, 
+ Band 221}
+wavelength = {
+ 1.99080, 2.00090, 2.01090, 2.02090, 2.03090, 2.04090, 2.05090, 2.06090,
+ 2.07100, 2.08100, 2.09100, 2.10100, 2.11100, 2.12100, 2.13090, 2.14090,
+ 2.15090, 2.16090, 2.17090, 2.18090, 2.19080, 2.20080, 2.21080, 2.22080,
+ 2.23070, 2.24070, 2.25060, 2.26060, 2.27060, 2.28050, 2.29040, 2.30040,
+ 2.31040, 2.32030, 2.33020, 2.34020, 2.35010, 2.36000, 2.37000, 2.37990,
+ 2.38980, 2.39970, 2.40960, 2.41960, 2.42950, 2.43940, 2.44930, 2.45920,
+ 2.46910, 2.47900}

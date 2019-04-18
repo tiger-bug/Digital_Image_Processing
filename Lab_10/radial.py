@@ -1,0 +1,10 @@
+'''[
+    "input.las",
+    {
+        "type":"filters.outlier",
+        "method":"radius",
+        "radius":1.0,
+        "min_k":4
+    },
+    "output.las"
+]'''

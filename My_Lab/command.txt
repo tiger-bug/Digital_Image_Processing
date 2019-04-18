@@ -1,0 +1,4 @@
+roslaunch loam_velodyne loam_velodyne.launch
+
+roslaunch velodyne_pointcloud VLP16_points.launch pcap:="/home/sspiegel/Downloads/2014-11-10-10-36-54_Velodyne-VLP_10Hz-County Fair(2).pcap"
+

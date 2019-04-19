@@ -16,6 +16,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{pdfpages}
+
 \usepackage{url}
 \usepackage{fancyhdr}
 \usepackage[font={small,it}]{caption}
@@ -71,7 +72,7 @@ In order to accomplish this, we will employ PDAL pipelines which are written as 
 \\\\
 The next section will demonstrate these methods as well as give a brief discussion on the theory of each one.  Then, a basic PDAL pipeline will be demonstrated  For the purpose of this exercise, our goal is to classify outliers, ground, buildings, and trees. We will be classifying an airborne LiDAR collect called \texttt{CSite1\char`_orig-utm} \cite{pdal}. 
 
-\section{Methods}\label{methods}
+\section{Methodology}\label{methods}
 The theoretical approach to point cloud classification is enumerated in section \ref{sec:intro}.  We will use a PDAL pipeline in addition to python processing in Jupyter Notebook to remove outliers, classify ground returns, and classify vegetation and buildings.  The next part of the methods section will give theoretical primers to each one of these tasks.  Example PDAL pipelines are detailed in the appendix.  
 \subsection{Outliers}\label{sub:outliers}
 The first thing we need to do is to classify the outliers.  Outliers are noise points that aren't attributed to things we are interested in.  In airborne LiDAR this could be due to dust, birds, etc.  Hence, the first step is to eliminate outliers.  There are 2 primary methods: Statistical and Radial.
@@ -154,7 +155,20 @@ In addition to estimating planes and computing point curvature, we can use singu
 \begin{equation}\label{eqn:rank}
 C = USU^T
 \end{equation}
-where the columns of $U$ are the eigenvectors of $C$ and the diagonals of $S$ are the eigenvalues of $C$.  Hence we count the number of eigenvalues that are above a certain threshold, $t$ (usually close to 0).  Hence the dimension or rank of the point is equal to the number of eigenvalues above $t$. 
+where the columns of $U$ are the eigenvectors of $C$ and the diagonals of $S$ are the eigenvalues of $C$.  Hence we count the number of eigenvalues that are above a certain threshold, $t$ (usually close to 0).  Hence the dimension or rank of the point is equal to the number of eigenvalues above $t$.
+\\\\
+A PDAL pipeline will be used to conduct the filtering.  Then using Jupyter Notebook we will bring the points into a dataframe and view the points in a ipyvolume viewer.  Then through a simple pandas query we can then distribute the rank 2 points that are not classified as ground to be buildings, since 2 dimensional objects in this scene are rooftops.  Then, we can set points with rank 3 to be vegetation.  This will give us a reasonable classification of the scene.   
+\section{Results and Discussion}
+Figure \ref{fig:output} shows the results of the pipeline
+\begin{figure}[h]
+	\centering
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=.4\linewidth]{output.png}
+		\captionof{figure}{Output via PDAL and Jupyter Notebook}
+		\label{fig:output}
+	\end{minipage}
+\end{figure}
 	\newpage
 \bibliographystyle{plain}
 \bibliography{bibfile}

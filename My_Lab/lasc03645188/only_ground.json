@@ -1,0 +1,17 @@
+{
+	"pipeline":[
+				{
+					"type":"readers.las",
+					"filename":"lasc03645188_ground_classified.las"
+				},
+				{
+					"type":"filters.range",
+					"limits":"Classification[2:2]"
+				},
+
+				{
+					"type":"writers.las",
+					"filename":"lasc03645188_only_ground.las"
+				}
+	]
+}

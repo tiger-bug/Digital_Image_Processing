@@ -1,0 +1,21 @@
+{
+	"pipeline":[
+				{
+					"type":"readers.las",
+					"filename":"lasc03645188.las"
+				},
+				{
+					"type":"filters.assign",
+					"assignment":"Classification[:]=1"
+				},
+				{
+					"type":"filters.smrf",
+					"slope":0.3,
+					"window":500
+				},
+				{
+					"type":"writers.las",
+					"filename":"lasc03645188_ground_classified.las"
+				}
+	]
+}

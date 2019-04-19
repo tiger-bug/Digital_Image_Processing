@@ -72,6 +72,7 @@ In order to accomplish this, we will employ PDAL pipelines which are written as 
 The next section will demonstrate these methods as well as give a brief discussion on the theory of each one.  Then, a basic PDAL pipeline will be demonstrated  For the purpose of this exercise, our goal is to classify outliers, ground, buildings, and trees. We will be classifying an airborne LiDAR collect called \texttt{CSite1\char`_orig-utm} \cite{pdal}. 
 
 \section{Methods}\label{methods}
+The theoretical approach to point cloud classification is enumerated in section \ref{sec:intro}.  We will use a PDAL pipeline in addition to python processing in Jupyter Notebook to remove outliers, classify ground returns, and classify vegetation and buildings.  The next part of the methods section will give theoretical primers to each one of these tasks.  Example PDAL pipelines are detailed in the appendix.  
 \subsection{Outliers}\label{sub:outliers}
 The first thing we need to do is to classify the outliers.  Outliers are noise points that aren't attributed to things we are interested in.  In airborne LiDAR this could be due to dust, birds, etc.  Hence, the first step is to eliminate outliers.  There are 2 primary methods: Statistical and Radial.
 \subsubsection{Statstical}\label{subsub:stat}
@@ -148,6 +149,8 @@ One final note about eigenvalues and eigenvectors.  We can compute the curvature
 \sigma_p = \frac{\lambda_0}{\lambda_0 + \lambda_1 + \lambda_2}
 \end{equation}
 This estimates the residuals of a point $p$.  The higher the residuals, the greater the eigenvalues and thus the greater the curvature.  Lower values of $\sigma_p$ indicate the point fits well on a plane \cite{RusuDoctoralDissertation}.  
+\subsubsection{Rank Estimation}\label{subsub:rank}
+In addition to estimating planes and computing point curvature, we can use singular value decomposition to determine the rank (dimension) of a point with $k$ nearest neighbors \cite{pdal}.  
 	\newpage
 \bibliographystyle{plain}
 \bibliography{bibfile}

@@ -12,6 +12,13 @@ Charles~R. Qi, Hao Su, Kaichun Mo, and Leonidas~J. Guibas.
 \newblock In {\em The IEEE Conference on Computer Vision and Pattern
   Recognition (CVPR)}, July 2017.
 
+\bibitem{RusuDoctoralDissertation}
+Radu~Bogdan Rusu.
+\newblock {\em Semantic 3D Object Maps for Everyday Manipulation in Human
+  Living Environments}.
+\newblock PhD thesis, Computer Science department, Technische Universitaet
+  Muenchen, Germany, October 2009.
+
 \bibitem{varney}
 Nina Varney.
 \newblock Lidar analysis for automatic region segmentation and object

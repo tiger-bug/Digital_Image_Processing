@@ -124,7 +124,30 @@ Closing=\text{\textit{dialation then erosion}}
 \end{equation}
 The primary aspect that is different about progressive morphological filtering is the window size $w$ does not stay at a constant size.  An opening operation is done to remove smaller object like trees from the ground returns.  Often buildings will be classified as ground returns since rooftops are often larger than the window size.  However as window $w$ gets progressiviely larger, buildings are removed since the new lower elevations are ground returns within the window.  In order to preserve terrain that might be sloping, a differential height threshold $dh_T$ is introduced.  The idea behind this is that buildings will have a larger height differential than terrain.  These parameters are introduced so that ground returns won't be misclassified as non-ground returns \cite{zhang2003progressive}.  An example of a progressive morphological filter pipeline with an outlier pipeline can be found in the appendix ().
 \subsection{Covariance of Points and Rank Estimation}\label{sub:Cov_Rank}
-Shape and plane estimation is extremely vital in determining structure within a point cloud.   
+\subsubsection{Covariance and Curvature}\label{subsub:cov}
+Shape and plane estimation is extremely vital in determining structure within a point cloud.   First and foremost is determining the normal vector, $\vec{n}$ at point $p$ with $k$ nearest neighbors.  Hence, we are interested in estimating a normal plane tangent to the surface at point $p$, which becomes a least squares problem \cite{RusuDoctoralDissertation}.  Let $x$ and $\vec{n}$ be a point and a normal vector describing the plane, respectively.  Then the distance $d_i$ of a point $p_i$ to the plane is as follows:
+\begin{equation}\label{eqn:least_square}
+d_i = (p_i - x)\cdot{\vec{n}}
+\end{equation}
+with the desire to minimize $d_i$.   If we let $x$ be the centroid of $p_i$ (which we will call $\overline{p}$) we have
+\begin{equation}\label{eqn:centroid}
+x = \overline{p} = \frac{1}{k}\sum_{i=1}^{k}p_i
+\end{equation}
+We solve for $\vec{n}$ by looking at the eigenvalues and eigenvectors of the covariance matrix, $C$ such that
+\begin{equation}\label{eqn:cov}
+C = \frac{1}{k}\sum_{i=1}^{k}(p_i - \overline{p})\cdot(p_i - \overline{p})^T
+\end{equation}
+Computing the eigenvalues and eigenvectors of this $3x3$ Covariance matrix we get 
+\begin{equation}\label{eqn:eigen}
+C\vec{v}_i = \lambda_i\vec{v}_i 
+\end{equation}
+where $i \in {0,1,2}$.  If we have $\lambda_0 < \lambda_1 < \lambda_2$, then normal vector $\vec{n}$ would be $\vec{v}_0$ \cite{RusuDoctoralDissertation}.  
+\\\\
+One final note about eigenvalues and eigenvectors.  We can compute the curvature of a point $p$ by taking the smallest eigenvalue $\lambda_0$ and dividing it by the sum of all the eigenvalues.  Hence, curvature at a point $p$ labeled $\sigma_p$ is as follows:
+\begin{equation}\label{eqn:curvature}
+\sigma_p = \frac{\lambda_0}{\lambda_0 + \lambda_1 + \lambda_2}
+\end{equation}
+This estimates the residuals of a point $p$.  The higher the residuals, the greater the eigenvalues and thus the greater the curvature.  Lower values of $\sigma_p$ indicate the point fits well on a plane \cite{RusuDoctoralDissertation}.  
 	\newpage
 \bibliographystyle{plain}
 \bibliography{bibfile}

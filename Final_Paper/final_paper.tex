@@ -107,7 +107,24 @@ false & \text{otherwise}
 An example pipeline can be found in the appendix ().\\\\
 The next step is to classify ground returns (classification value of 2).  In order to do this, We will employ mathematical morphology with a progressively growing window to find ground returns.  
 \subsection{Ground Classification}\label{sub:ground}
-Morphological filtering dates back to mathematical set theory and digital image processing \cite{zhang2003progressive}.  
+Morphological filtering dates back to mathematical set theory and digital image processing \cite{zhang2003progressive}.  Instead of using dialation and erosion of pixels and digital numbers, Progressive Morphological Filtering (PMF) dialates and erodes elevation values within a given window.  Consider a point, $p_i$ with corresponding coordinates $(x_i,y_i,z_i)$.  The dialation $d_{p}$ of point $p$ is defined as 
+\begin{equation}\label{eqn:dialation}
+d_{p}=\underset{(x_{p},y_{p})\in w}{max} (z_{p})
+\end{equation}
+where points $(x_{p},y_{p},z_{p})$ are the set of neighbor point within a window, $w$.  The erosion $e_p$ of point $p$ is defined as 
+\begin{equation}\label{eqn:erosion}
+e_{p}=\underset{(x_{p},y_{p})\in w}{min} (z_{p})
+\end{equation}
+The erosion operatoin finds the minimum in a window $w$.  Hence, we have the following equations that describe opening and closing operations.  
+\begin{equation}\label{eqn:opening}
+Opening=\text{\textit{erosion then dialation}}
+\end{equation}
+\begin{equation}\label{eqn:closing}
+Closing=\text{\textit{dialation then erosion}}
+\end{equation}
+The primary aspect that is different about progressive morphological filtering is the window size $w$ does not stay at a constant size.  An opening operation is done to remove smaller object like trees from the ground returns.  Often buildings will be classified as ground returns since rooftops are often larger than the window size.  However as window $w$ gets progressiviely larger, buildings are removed since the new lower elevations are ground returns within the window.  In order to preserve terrain that might be sloping, a differential height threshold $dh_T$ is introduced.  The idea behind this is that buildings will have a larger height differential than terrain.  These parameters are introduced so that ground returns won't be misclassified as non-ground returns \cite{zhang2003progressive}.  An example of a progressive morphological filter pipeline with an outlier pipeline can be found in the appendix ().
+\subsection{Covariance of Points and Rank Estimation}\label{sub:Cov_Rank}
+Shape and plane estimation is extremely vital in determining structure within a point cloud.   
 	\newpage
 \bibliographystyle{plain}
 \bibliography{bibfile}

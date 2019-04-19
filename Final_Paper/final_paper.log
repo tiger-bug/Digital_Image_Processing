@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.11)  17 APR 2019 14:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.11)  19 APR 2019 15:06
 entering extended mode
 **./final_paper.tex
 (final_paper.tex
@@ -659,11 +659,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 106--109
 
 [4] (final_paper.bbl) [5] (final_paper.aux) ) 
 Here is how much of TeX's memory you used:
- 9214 strings out of 492970
- 137908 string characters out of 3125261
- 509814 words of memory out of 3000000
- 12895 multiletter control sequences out of 15000+200000
- 12819 words of font info for 49 fonts, out of 3000000 for 9000
+ 9223 strings out of 492970
+ 138014 string characters out of 3125261
+ 509856 words of memory out of 3000000
+ 12902 multiletter control sequences out of 15000+200000
+ 13520 words of font info for 51 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  53i,12n,92p,1129b,261s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/sspiegel/AppData/Local/P
@@ -672,18 +672,21 @@ rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/sspiegel
 :/Users/sspiegel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmex10.pfb><C:/Users/sspiegel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmmi10.pfb><C:/Users/sspiegel/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/sspiegel/AppData/Local/P
-rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/sspiegel/
-AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
+2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/sspiegel/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/sspiegel/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/
 Users/sspiegel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmr17.pfb><C:/Users/sspiegel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr8.pfb><C:/Users/sspiegel/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/sspiegel/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/sspiegel/App
-Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on final_paper.pdf (5 pages, 154431 bytes).
+/cmr12.pfb><C:/Users/sspiegel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr17.pfb><C:/Users/sspiegel/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/sspiegel/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/sspiegel/AppD
+ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/User
+s/sspiegel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
+i10.pfb><C:/Users/sspiegel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmtt10.pfb>
+Output written on final_paper.pdf (5 pages, 176605 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
+ 74 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

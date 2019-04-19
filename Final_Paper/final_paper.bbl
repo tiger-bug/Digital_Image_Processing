@@ -5,6 +5,11 @@ Andrew Bell, Brad Chambers, Howard Butler, and Michael Gerlek.
 \newblock Introduction to lidar - pdal.io.
 \newblock \url{https://pdal.io/}, 2019.
 
+\bibitem{madsen2004singular}
+Rasmus~Elsborg Madsen, Lars~Kai Hansen, and Ole Winther.
+\newblock Singular value decomposition and principal component analysis.
+\newblock {\em Neural Networks}, 1:1--5, 2004.
+
 \bibitem{PointNet}
 Charles~R. Qi, Hao Su, Kaichun Mo, and Leonidas~J. Guibas.
 \newblock Pointnet: Deep learning on point sets for 3d classification and

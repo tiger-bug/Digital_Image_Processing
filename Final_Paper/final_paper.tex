@@ -150,7 +150,11 @@ One final note about eigenvalues and eigenvectors.  We can compute the curvature
 \end{equation}
 This estimates the residuals of a point $p$.  The higher the residuals, the greater the eigenvalues and thus the greater the curvature.  Lower values of $\sigma_p$ indicate the point fits well on a plane \cite{RusuDoctoralDissertation}.  
 \subsubsection{Rank Estimation}\label{subsub:rank}
-In addition to estimating planes and computing point curvature, we can use singular value decomposition to determine the rank (dimension) of a point with $k$ nearest neighbors \cite{pdal}.  
+In addition to estimating planes and computing point curvature, we can use singular value decomposition to determine the rank (dimension) of a point with $k$ nearest neighbors \cite{pdal}.  The idea is to use the covariance matrix as illustrated in equation \ref{eqn:cov}.  Note that a covariance matrix is square and symmetric ($C = C^T$) so we can look at the spectral decomposition of the matrix, $C$ \cite{madsen2004singular}.  Hence, we can write $C$ as follows:
+\begin{equation}\label{eqn:rank}
+C = USU^T
+\end{equation}
+where the columns of $U$ are the eigenvectors of $C$ and the diagonals of $S$ are the eigenvalues of $C$.  Hence we count the number of eigenvalues that are above a certain threshold, $t$ (usually close to 0).  Hence the dimension or rank of the point is equal to the number of eigenvalues above $t$. 
 	\newpage
 \bibliographystyle{plain}
 \bibliography{bibfile}

@@ -124,7 +124,30 @@ Opening=\text{\textit{erosion then dialation}}
 \begin{equation}\label{eqn:closing}
 Closing=\text{\textit{dialation then erosion}}
 \end{equation}
-The primary aspect that is different about progressive morphological filtering is the window size $w$ does not stay at a constant size.  An opening operation is done to remove smaller object like trees from the ground returns.  Often buildings will be classified as ground returns since rooftops are often larger than the window size.  However as window $w$ gets progressiviely larger, buildings are removed since the new lower elevations are ground returns within the window.  In order to preserve terrain that might be sloping, a differential height threshold $dh_T$ is introduced.  The idea behind this is that buildings will have a larger height differential than terrain.  These parameters are introduced so that ground returns won't be misclassified as non-ground returns \cite{zhang2003progressive}.  An example of a progressive morphological filter pipeline with an outlier pipeline can be found in the appendix ().
+The primary aspect that is different about progressive morphological filtering is the window size $w$ does not stay at a constant size.  An opening operation is done to remove smaller object like trees from the ground returns.  Often buildings will be classified as ground returns since rooftops are often larger than the window size.  However as window $w$ gets progressiviely larger, buildings are removed since the new lower elevations are ground returns within the window.  In order to preserve terrain that might be sloping, a differential height threshold $dh_T$ is introduced.  The idea behind this is that buildings will have a larger height differential than terrain.  These parameters are introduced so that ground returns won't be misclassified as non-ground returns \cite{zhang2003progressive}.  An example of a progressive morphological filter pipeline can be found below. It filters ground points and classifies the ground points as 2 in the output las file.  
+\begin{lstlisting}[title=Ground filtering pipeline, label=ground]
+{
+"pipeline":[
+		{
+			"type":"readers.las",
+			"filename":"test.las"
+		},
+		{
+			"type":"filters.pmf",
+			"cell_size":1.5,
+			"exponential":false,
+			"max_window_size":50,
+			"slope":0.4
+			
+		},
+		{
+			"type":"writers.las",
+			"filename":"test_ground_classified.las"
+		}
+
+	]
+}
+\end{lstlisting}
 \subsection{Covariance of Points and Rank Estimation}\label{sub:Cov_Rank}
 \subsubsection{Covariance and Curvature}\label{subsub:cov}
 Shape and plane estimation is extremely vital in determining structure within a point cloud.   First and foremost is determining the normal vector, $\vec{n}$ at point $p$ with $k$ nearest neighbors.  Hence, we are interested in estimating a normal plane tangent to the surface at point $p$, which becomes a least squares problem \cite{RusuDoctoralDissertation}.  Let $x$ and $\vec{n}$ be a point and a normal vector describing the plane, respectively.  Then the distance $d_i$ of a point $p_i$ to the plane is as follows:
@@ -157,19 +180,23 @@ C = USU^T
 \end{equation}
 where the columns of $U$ are the eigenvectors of $C$ and the diagonals of $S$ are the eigenvalues of $C$.  Hence we count the number of eigenvalues that are above a certain threshold, $t$ (usually close to 0).  Hence the dimension or rank of the point is equal to the number of eigenvalues above $t$.
 \\\\
-A PDAL pipeline will be used to conduct the filtering.  Then using Jupyter Notebook we will bring the points into a dataframe and view the points in a ipyvolume viewer.  Then through a simple pandas query we can then distribute the rank 2 points that are not classified as ground to be buildings, since 2 dimensional objects in this scene are rooftops.  Then, we can set points with rank 3 to be vegetation.  This will give us a reasonable classification of the scene.   
+A PDAL pipeline will be used to conduct the filtering.  Then using Jupyter Notebook we will bring the points into a dataframe and view the points in a ipyvolume viewer.  Then through a simple pandas query we can then distribute the rank 2 points that are not classified as ground to be buildings, since 2 dimensional objects in this scene are rooftops.  Then, we can set points with rank 3 to be vegetation.  This will give us a reasonable classification of the scene.  Below is a full pipeline in order to classify the scene.  
+ 
 \section{Results and Discussion}
-Figure \ref{fig:output} shows the results of the pipeline
+
 \begin{figure}[h]
 	\centering
-	\begin{minipage}{.5\textwidth}
+	\begin{minipage}{.7\textwidth}
 		\centering
-		\includegraphics[width=.4\linewidth]{output.png}
+		\includegraphics[width=.7\linewidth]{output.png}
 		\captionof{figure}{Output via PDAL and Jupyter Notebook}
 		\label{fig:output}
 	\end{minipage}
 \end{figure}
-	\newpage
+Figure \ref{fig:output} shows the results of the pipeline.  As we can see, the buildings are yellow and the vegetation is green.  There seems to be misclassification between some ground returns and buildings.  This can be avoided by changing some of the parameters with the filter.  Note that instead of using a progressive morphological filter I used a simple morphological filter, which is based on the pmf. Also note that cars would not be correctly classified.  There are better methods of classifying point clouds.    There are different ways to classify point clouds as noted in section \ref{sec:intro}.  Better methods include segmenting point clouds into different objects and using machine learning techniques.  Some of these methods include support vector machine and deep neural networks.  
+\\\\
+Even though 
+\newpage
 \bibliographystyle{plain}
 \bibliography{bibfile}
 	

@@ -17,6 +17,12 @@ Charles~R. Qi, Hao Su, Kaichun Mo, and Leonidas~J. Guibas.
 \newblock In {\em The IEEE Conference on Computer Vision and Pattern
   Recognition (CVPR)}, July 2017.
 
+\bibitem{rabbani2006segmentation}
+Tahir Rabbani, Frank Van Den~Heuvel, and George Vosselmann.
+\newblock Segmentation of point clouds using smoothness constraint.
+\newblock {\em International archives of photogrammetry, remote sensing and
+  spatial information sciences}, 36(5):248--253, 2006.
+
 \bibitem{RusuDoctoralDissertation}
 Radu~Bogdan Rusu.
 \newblock {\em Semantic 3D Object Maps for Everyday Manipulation in Human
